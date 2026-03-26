@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerugoya Boys High School | Lead the Way</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        :root{
+        --navy:#0a2a4a;--blue:#1565c0;--sky:#2196f3;--teal:#00897b;
+        --gold:#f9a825;--white:#fff;--light:#f0f6ff;--text:#1a2a3a;--muted:#546e7a;
+        --sans:'Nunito',sans-serif;--serif:'Playfair Display',serif;
+            }
+        
+          nav{background:var(--navy);padding:0 40px;position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,0.3)}
+          .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px}
+          .nav-logo{display:flex;align-items:center;gap:12px}
+          .nav-logo img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--gold)}
+          .nav-logo-text .school{font-size:15px;font-weight:900;color:#fff}
+           .nav-logo-text .motto{font-size:10px;color:var(--gold);letter-spacing:1px;text-transform:uppercase}
+           .nav-links{display:flex;gap:4px;align-items:center}
+           .nav-links a{color:rgba(255,255,255,0.75);font-size:13px;font-weight:600;padding:8px 14px;border-radius:4px;transition:all .2s}
+            .nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,0.1)}
+            .nav-links a.active{border-bottom:2px solid var(--gold)}
+            .nav-cta{background:var(--gold);color:var(--navy)!important;border-radius:4px;font-weight:800!important}
+            .nav-cta:hover{background:#f57f17!important}
+            .hamburger{display:none;background:transparent;border:none;color:#fff;font-size:22px;cursor:pointer}
+            .mobile-menu{
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 75%;
+            height: 100vh;
+            background: var(--navy);
+            padding: 30px 20px;
+           z-index: 1000;
+
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+}
+
+.mobile-menu.open{
+  transform: translateX(0);
+}
+                       .mobile-menu a{display:block;color:rgba(255,255,255,0.8);padding:10px 0;font-size:14px;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.07)} 
+
+        .hero-bg {
+            background: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.75)), 
+                        url('Resources/Gemini_Generated_Image_kzkacekzkacekzka.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .nav-active:after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #fbbf24;
+        }
+    @media (max-width: 768px){
+  .nav-links{
+    display:none;
+  }
+
+  .hamburger{
+    display:block;
+  }
+
+#overlay{
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 999;
+  display:none;
+}
+
+#overlay.show{
+  display:block;
+}
+nav{
+  z-index: 200;
+}
+}
+    </style>
+   <script>
+function toggleMenu(){
+  document.getElementById('mob').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+</script>
+</head>
+<body class="bg-gray-50">
+
+    <!-- NAVBAR -->
+   
+    <nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="Resources/F.jpeg" alt="School Crest" class="w-14 h-14 object-contain">
+      <div class="nav-logo-text">
+        <div class="school">Kerugoya Boys High School</div>
+        <div class="motto">Lead The Way</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="academics.html" >Academics</a>
+      <a href="admissions.html">Admissions</a>
+      <a href="student-life.html">Student Life</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="admissions.html" class="nav-cta">Apply Now</a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mob">
+  <a href="index.html">Home</a>
+  <a href="academics.html">Academics</a>
+  <a href="admissions.html">Admissions</a>
+  <a href="student-life.html">Student Life</a>
+  <a href="gallery.html">Gallery</a>
+</div>
+
+<div id="overlay" onclick="toggleMenu()"></div>
+
+    <!-- HERO -->
+    <header class="hero-bg h-screen flex items-center text-white">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur px-8 py-3 rounded-full text-sm mb-8">
+                <span class="text-amber-400">●</span>
+                ACADEMIC EXCELLENCE SINCE 1965
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
+                Welcome to<br><span class="text-amber-400">Kerugoya Boys</span><br>High School
+            </h1>
+            
+            <p class="max-w-2xl mx-auto text-lg md:text-xl opacity-90">
+                Nurturing disciplined, academically excellent young men who will lead the way in Kenya and beyond.
+            </p>
+
+            <div class="mt-12 flex flex-col sm:flex-row gap-5 justify-center">
+                <a href="academics.html" 
+                   class="bg-white text-[#0f172a] font-semibold px-10 py-4 rounded-full hover:bg-amber-400 transition-all flex items-center justify-center gap-3 text-lg">
+                    Explore Academics <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="admissions.html" 
+                   class="border-2 border-white hover:bg-white hover:text-[#0f172a] font-semibold px-10 py-4 rounded-full transition-all text-lg">
+                    Join Our Family
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- STATS -->
+    <div class="bg-[#0f172a] py-12 text-white">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+            <div>
+                <div class="text-5xl font-bold text-amber-400">7.28</div>
+                <div class="mt-2 text-sm tracking-widest opacity-75">KCSE MEAN SCORE</div>
+            </div>
+            <div>
+                <div class="text-5xl font-bold text-amber-400">61%</div>
+                <div class="mt-2 text-sm tracking-widest opacity-75">UNIVERSITY ENTRY</div>
+            </div>
+            <div>
+                <div class="text-5xl font-bold text-amber-400">2000+</div>
+                <div class="mt-2 text-sm tracking-widest opacity-75">STUDENTS ENROLLED</div>
+            </div>
+            <div>
+                <div class="text-5xl font-bold text-amber-400">47</div>
+                <div class="mt-2 text-sm tracking-widest opacity-75">TEACHING STAFF</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUICK LINKS / SECTIONS -->
+    <div class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-3 gap-8">
+        <a href="academics.html" class="group bg-white rounded-3xl overflow-hidden shadow hover:shadow-2xl transition-all">
+            <img src="Resources/C.jpeg" alt="School Building" class="w-full h-56 object-cover">
+            <div class="p-8">
+                <h3 class="text-2xl font-semibold mb-3 group-hover:text-amber-500">Academics</h3>
+                <p class="text-gray-600">CBC Senior School Pathways • STEM, Social Sciences & Arts</p>
+            </div>
+        </a>
+
+        <a href="admissions.html" class="group bg-white rounded-3xl overflow-hidden shadow hover:shadow-2xl transition-all">
+            <img src="Resources/B.jpeg" alt="School Entrance" class="w-full h-56 object-cover">
+            <div class="p-8">
+                <h3 class="text-2xl font-semibold mb-3 group-hover:text-amber-500">Admissions</h3>
+                <p class="text-gray-600">Join Grade 10 through Ministry Placement • 2026 Intake Open</p>
+            </div>
+        </a>
+
+        <a href="gallery.html" class="group bg-white rounded-3xl overflow-hidden shadow hover:shadow-2xl transition-all">
+            <img src="Resources/E.jpeg" alt="School Event" class="w-full h-56 object-cover">
+            <div class="p-8">
+                <h3 class="text-2xl font-semibold mb-3 group-hover:text-amber-500">School Life</h3>
+                <p class="text-gray-600">Events, Sports, Clubs & Beautiful 50-acre school</p>
+            </div>
+        </a>
+    </div>
+
+    <!-- PRINCIPAL WELCOME -->
+    <div class="bg-white py-20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <img src="Resources/F.jpeg" alt="Crest" class="mx-auto w-20 mb-8">
+            <h2 class="text-4xl font-bold mb-6">Welcome from the Principal</h2>
+            <p class="text-lg text-gray-600 leading-relaxed">
+                It is my great honour to welcome you to Kerugoya Boys High School. 
+                For over six decades, we have proudly nurtured young men of character, 
+                discipline and academic excellence. We continue to "Lead the Way".
+            </p>
+            <a href="#" class="mt-10 inline-block bg-[#0f172a] text-white px-10 py-4 rounded-full font-medium hover:bg-amber-400 hover:text-black transition">
+                Read Full Message →
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#0f172a] text-gray-400 py-16">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+            <div>
+                <div class="flex items-center gap-3 text-white mb-6">
+                    <img src="Resources/F.jpeg" alt="Crest" class="w-12 h-12">
+                    <span class="font-bold text-xl">KERUGOYA BOYS HIGH SCHOOL</span>
+                </div>
+                <p class="text-sm">P.O. Box 27 - 10300 Kerugoya, Kenya<br>
+                KNEC Code: 09203401 • Est. 1961</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                <a href="academics.html" class="block hover:text-white py-1">Academics</a>
+                <a href="admissions.html" class="block hover:text-white py-1">Admissions</a>
+                <a href="student-life.html" class="block hover:text-white py-1">Student Life</a>
+                <a href="gallery.html" class="block hover:text-white py-1">Gallery</a>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4">Contact</h4>
+                <p class="text-sm leading-relaxed">
+                    Tel: 0716 337 026<br>
+                    Email: kerugoyaboys2015@gmail.com
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4">Follow Us</h4>
+                <div class="flex gap-6 text-3xl">
+                    <i class="fab fa-facebook hover:text-amber-400 cursor-pointer"></i>
+                    <i class="fab fa-instagram hover:text-amber-400 cursor-pointer"></i>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-xs mt-16 pt-8 border-t border-gray-800">
+            © 2026 Kerugoya Boys High School • All Rights Reserved
+        </div>
+    </footer>
+
+
+    </script>
+</body>
+</html>

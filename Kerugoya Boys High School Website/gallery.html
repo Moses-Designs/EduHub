@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — Kerugoya Boys High School</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0a2a4a;--blue:#1565c0;--sky:#2196f3;--teal:#00897b;
+  --gold:#f9a825;--white:#fff;--light:#f0f6ff;--text:#1a2a3a;--muted:#546e7a;
+  --sans:'Nunito',sans-serif;--serif:'Playfair Display',serif;
+}
+body{font-family:var(--sans);color:var(--text);background:#0d1117}
+a{text-decoration:none;color:inherit}
+
+nav{background:var(--navy);padding:0 40px;position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,0.3)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--gold)}
+.nav-logo-text .school{font-size:15px;font-weight:900;color:#fff}
+.nav-logo-text .motto{font-size:10px;color:var(--gold);letter-spacing:1px;text-transform:uppercase}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-links a{color:rgba(255,255,255,0.75);font-size:13px;font-weight:600;padding:8px 14px;border-radius:4px;transition:all .2s}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,0.1)}
+.nav-links a.active{border-bottom:2px solid var(--gold)}
+.nav-cta{background:var(--gold);color:var(--navy)!important;border-radius:4px;font-weight:800!important}
+.nav-cta:hover{background:#f57f17!important}
+.hamburger{display:none;background:transparent;border:none;color:#fff;font-size:22px;cursor:pointer}
+        .mobile-menu{
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 75%;
+            height: 100vh;
+            background: var(--navy);
+            padding: 30px 20px;
+           z-index: 1000;
+
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+}
+
+.mobile-menu.open{
+  transform: translateX(0);
+}
+.mobile-menu a{display:block;color:rgba(255,255,255,0.8);padding:10px 0;font-size:14px;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.07)}
+#overlay{
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 999;
+  display:none;
+}
+
+#overlay.show{
+  display:block;
+}
+nav{
+  z-index: 200;
+}
+/* HERO */
+.hero{background:linear-gradient(135deg,#1a237e 0%,var(--navy) 60%,#0d47a1 100%);
+  padding:80px 40px 60px;text-align:center;color:#fff;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;
+  background:url('A.jpeg') center/cover;opacity:.15}
+.hero-inner{position:relative;z-index:1;max-width:800px;margin:0 auto}
+.hero-tag{display:inline-block;background:rgba(249,168,37,0.2);border:1px solid var(--gold);
+  color:var(--gold);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  padding:5px 16px;border-radius:20px;margin-bottom:16px}
+.hero h1{font-family:var(--serif);font-size:clamp(32px,5vw,52px);margin-bottom:16px;line-height:1.1}
+.hero p{font-size:16px;opacity:.85;line-height:1.8;max-width:600px;margin:0 auto}
+
+/* FILTER TABS */
+.filter-bar{padding:32px 40px;background:#111827;border-bottom:1px solid rgba(255,255,255,0.08)}
+.filter-inner{max-width:1200px;margin:0 auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.filter-label{font-size:12px;color:rgba(255,255,255,0.4);font-weight:700;text-transform:uppercase;
+  letter-spacing:1px;margin-right:8px}
+.filter-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);
+  color:rgba(255,255,255,0.6);padding:8px 18px;border-radius:20px;cursor:pointer;
+  font-family:var(--sans);font-size:13px;font-weight:600;transition:all .2s}
+.filter-btn:hover{background:rgba(255,255,255,0.1);color:#fff}
+.filter-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+
+/* GALLERY GRID */
+.gallery-section{padding:48px 40px;max-width:1200px;margin:0 auto}
+.gallery-section-label{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:8px}
+.gallery-section-title{font-family:var(--serif);font-size:28px;color:#fff;margin-bottom:32px}
+
+/* Masonry-style grid */
+.masonry{columns:3;column-gap:14px}
+.masonry-item{break-inside:avoid;margin-bottom:14px;cursor:pointer;position:relative;
+  overflow:hidden;border-radius:8px;display:block}
+.masonry-item img{width:100%;display:block;transition:transform .4s ease;border-radius:8px}
+.masonry-item:hover img{transform:scale(1.05)}
+.masonry-overlay{
+  position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);
+  opacity:0;transition:opacity .3s;border-radius:8px;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:16px;
+}
+.masonry-item:hover .masonry-overlay{opacity:1}
+.masonry-title{color:#fff;font-size:13px;font-weight:700;margin-bottom:4px}
+.masonry-tag{display:inline-block;background:rgba(249,168,37,0.2);border:1px solid var(--gold);
+  color:var(--gold);font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px}
+
+/* Featured photos row */
+.featured-row{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin-bottom:14px}
+.featured-main{border-radius:10px;overflow:hidden;cursor:pointer;position:relative;height:340px}
+.featured-main img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.featured-main:hover img{transform:scale(1.04)}
+.featured-small{border-radius:10px;overflow:hidden;cursor:pointer;position:relative;flex:1}
+.featured-small img{width:100%;height:100%;object-fit:cover;transition:transform .4s;display:block}
+.featured-small:hover img{transform:scale(1.05)}
+.photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.65),transparent);
+  opacity:0;transition:opacity .3s;display:flex;flex-direction:column;justify-content:flex-end;padding:14px}
+.featured-main:hover .photo-overlay,.featured-small:hover .photo-overlay{opacity:1}
+.photo-title{color:#fff;font-size:14px;font-weight:700;margin-bottom:3px}
+.photo-sub{font-size:11px;color:rgba(255,255,255,0.7)}
+
+/* Count strip */
+.count-strip{background:rgba(255,255,255,0.04);padding:20px 40px;
+  border-bottom:1px solid rgba(255,255,255,0.06)}
+.count-strip-inner{max-width:1200px;margin:0 auto;display:flex;gap:32px;align-items:center}
+.cs-item{display:flex;align-items:center;gap:10px}
+.cs-num{font-family:var(--serif);font-size:28px;color:var(--gold)}
+.cs-label{font-size:12px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px}
+
+/* LIGHTBOX */
+#lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:1000;
+  display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;padding:24px;
+  animation:lbFade .2s ease}
+#lightbox.open{display:flex}
+@keyframes lbFade{from{opacity:0}to{opacity:1}}
+#lb-img{max-width:90vw;max-height:78vh;object-fit:contain;border-radius:8px}
+#lb-info{text-align:center;max-width:600px}
+#lb-title{font-family:var(--serif);font-size:20px;color:#fff;margin-bottom:6px}
+#lb-caption{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6}
+.lb-close{position:fixed;top:20px;right:24px;background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.2);border-radius:50%;width:44px;height:44px;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:20px;cursor:pointer;transition:all .2s}
+.lb-close:hover{background:rgba(255,45,85,0.4);border-color:rgba(255,45,85,0.6)}
+.lb-nav{display:flex;gap:12px;margin-top:8px}
+.lb-nav-btn{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
+  color:#fff;padding:9px 20px;border-radius:6px;cursor:pointer;font-size:13px;
+  transition:all .2s;display:flex;align-items:center;gap:6px;font-family:var(--sans)}
+.lb-nav-btn:hover{background:rgba(255,255,255,0.2)}
+
+footer{background:var(--navy);color:rgba(255,255,255,0.7);text-align:center;padding:32px 40px;font-size:13px;margin-top:60px}
+footer strong{color:var(--gold)}
+
+@media(max-width:900px){
+  .masonry{columns:2}
+  .featured-row{grid-template-columns:1fr 1fr}
+  .featured-main{height:240px}
+}
+@media(max-width:600px){
+  nav{padding:0 16px}.nav-links{display:none}.hamburger{display:block}
+  .hero{padding:56px 20px}
+  .filter-bar,.gallery-section,.count-strip{padding-left:20px;padding-right:20px}
+  .masonry{columns:1}
+  .featured-row{grid-template-columns:1fr}
+  .count-strip-inner{flex-wrap:wrap;gap:16px}
+}
+</style>
+   <script>
+function toggleMenu(){
+  document.getElementById('mob').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="Resources/F.jpeg" alt="School Crest" class="w-14 h-14 object-contain">
+      <div class="nav-logo-text">
+        <div class="school">Kerugoya Boys High School</div>
+        <div class="motto">Lead The Way</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="academics.html">Academics</a>
+      <a href="admissions.html">Admissions</a>
+      <a href="student-life.html">Student Life</a>
+      <a href="gallery.html" class="active">Gallery</a>
+      <a href="admissions.html" class="nav-cta">Apply Now</a>
+    </div>
+   <button class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mob">
+  <a href="index.html">Home</a>
+  <a href="academics.html">Academics</a>
+  <a href="admissions.html">Admissions</a>
+  <a href="student-life.html">Student Life</a>
+  <a href="gallery.html">Gallery</a>
+</div>
+<div id="overlay" onclick="toggleMenu()"></div>
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <div class="lb-close" onclick="closeLightbox()">✕</div>
+  <img id="lb-img" src="" alt="">
+  <div id="lb-info">
+    <div id="lb-title"></div>
+    <div id="lb-caption"></div>
+  </div>
+  <div class="lb-nav">
+    <button class="lb-nav-btn" onclick="navLightbox(-1)"><i class="fas fa-arrow-left"></i> Previous</button>
+    <button class="lb-nav-btn" onclick="navLightbox(1)">Next <i class="fas fa-arrow-right"></i></button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">School Life in Pictures</div>
+    <h1>Photo Gallery</h1>
+    <p>A visual journey through our beautiful 50-acre school, events, sports, and the vibrant student life at Kerugoya Boys High School.</p>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="count-strip">
+  <div class="count-strip-inner">
+    <div class="cs-item"><div class="cs-num">50</div><div class="cs-label">Acre School</div></div>
+    <div class="cs-item"><div class="cs-num">1965</div><div class="cs-label">Founded</div></div>
+    <div class="cs-item"><div class="cs-num">2000+</div><div class="cs-label">Students</div></div>
+    <div class="cs-item"><div class="cs-num">60+</div><div class="cs-label">Years of Excellence</div></div>
+  </div>
+</div>
+
+<!-- FILTER -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn active" onclick="filterGallery('all',this)">All Photos</button>
+    <button class="filter-btn" onclick="filterGallery('school',this)">School</button>
+    <button class="filter-btn" onclick="filterGallery('events',this)">Events</button>
+    <button class="filter-btn" onclick="filterGallery('sports',this)">Sports</button>
+    <button class="filter-btn" onclick="filterGallery('heritage',this)">Heritage</button>
+  </div>
+</div>
+
+<!-- FEATURED -->
+<div class="gallery-section" id="gallery-all">
+  <div class="gallery-section-label">Featured</div>
+  <div class="gallery-section-title">Kerugoya Boys — In Pictures</div>
+
+  <!-- Featured row -->
+  <div class="featured-row" style="margin-bottom:14px">
+    <div class="featured-main" onclick="openLightbox(0)">
+      <img src="Resources/Gemini_Generated_Image_kzkacekzkacekzka.png" alt="Kerugoya Boys Main Block" onerror="this.src='';this.parentElement.style.background='#1e2740'">
+      <div class="photo-overlay">
+        <div class="photo-title">Main Administration Block</div>
+        <div class="photo-sub">Kerugoya Boys High School</div>
+      </div>
+    </div>
+   
+      <div class="featured-small" onclick="openLightbox(2)">
+        <img src="Resources/E.jpeg" alt="School Events" onerror="this.src='';this.parentElement.style.background='#1e2740'">
+        <div class="photo-overlay">
+          <div class="photo-title">School Events</div>
+          <div class="photo-sub">Annual Open Day & Celebrations</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Masonry grid -->
+  <div class="masonry" id="masonry-grid">
+    <!-- Items injected by JS -->
+  </div>
+</div>
+
+<!-- Hidden filtered sections -->
+<div id="gallery-school" style="display:none" class="gallery-section">
+  <div class="gallery-section-title" style="color:#fff">School & Buildings</div>
+  <div class="masonry" id="masonry-school"></div>
+</div>
+<div id="gallery-events" style="display:none" class="gallery-section">
+  <div class="gallery-section-title" style="color:#fff">Events & Activities</div>
+  <div class="masonry" id="masonry-events"></div>
+</div>
+<div id="gallery-sports" style="display:none" class="gallery-section">
+  <div class="gallery-section-title" style="color:#fff">Sports</div>
+  <div class="masonry" id="masonry-sports"></div>
+</div>
+<div id="gallery-heritage" style="display:none" class="gallery-section">
+  <div class="gallery-section-title" style="color:#fff">Heritage & History</div>
+  <div class="masonry" id="masonry-heritage"></div>
+</div>
+
+<footer>
+  <p>© 2026 <strong>Kerugoya Boys High School</strong> — P.O. Box 27, Kerugoya, Kirinyaga County, Kenya &nbsp;|&nbsp; 📞 0716 337 026 &nbsp;|&nbsp; ✉️ kerugoyaboys2015@gmail.com</p>
+</footer>
+
+<script>
+const PHOTOS = [
+  { src:'A.jpeg',  title:'Main Administration Block',       caption:'The iconic main entrance of Kerugoya Boys High School along the Kerugoya-Kutus road, Kirinyaga County.',  category:'school'  },
+  { src:'B.jpeg',  title:'School Crest & Badge',            caption:'The proud school crest of Kerugoya Boys — "Lead The Wits" — established in 1959.',                         category:'heritage'},
+  { src:'C.jpeg',  title:'School Open Day Event',           caption:'Parents, students and guests gather at an annual open day celebration on the school grounds.',              category:'events'  },
+  { src:'D.jpeg',  title:'School Monument & Entrance Gate', caption:'The Kerugoya Boys school monument at the main entrance, a proud symbol of decades of excellence.',          category:'school'  },
+  { src:'E.jpeg',  title:'School Library Block',            caption:'The school library and academic block — a hub of learning for over 700 students.',                          category:'school'  },
+  { src:'F.jpeg',  title:'School Administration Compound',  caption:'Aerial view of the school administrative compound and classrooms set in lush green grounds.',              category:'school'  },
+  { src:'G.jpeg',  title:'School School — Green Grounds',   caption:'The school\'s beautifully maintained 50-acre grounds with mature trees and trimmed hedges.',               category:'school'  },
+];
+
+let currentIndex = 0;
+
+function buildMasonry(containerId, photos) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = photos.map((p, i) => `
+    <div class="masonry-item" onclick="openLightbox(${PHOTOS.indexOf(p)})">
+      <img src="${p.src}" alt="${p.title}" loading="lazy"
+        onerror="this.parentElement.style.display='none'">
+      <div class="masonry-overlay">
+        <div class="masonry-title">${p.title}</div>
+        <span class="masonry-tag">${p.category}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openLightbox(idx) {
+  currentIndex = idx;
+  const p = PHOTOS[idx];
+  document.getElementById('lb-img').src       = p.src;
+  document.getElementById('lb-title').textContent   = p.title;
+  document.getElementById('lb-caption').textContent = p.caption;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function navLightbox(dir) {
+  currentIndex = (currentIndex + dir + PHOTOS.length) % PHOTOS.length;
+  openLightbox(currentIndex);
+}
+
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  ['all','school','events','sports','heritage'].forEach(c => {
+    document.getElementById('gallery-' + c).style.display = c === cat ? 'block' : 'none';
+  });
+}
+
+// Init all grids
+buildMasonry('masonry-grid', PHOTOS);
+buildMasonry('masonry-school',  PHOTOS.filter(p=>p.category==='school'));
+buildMasonry('masonry-events',  PHOTOS.filter(p=>p.category==='events'));
+buildMasonry('masonry-sports',  PHOTOS.filter(p=>p.category==='sports'));
+buildMasonry('masonry-heritage',PHOTOS.filter(p=>p.category==='heritage'));
+
+// Keyboard nav
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowRight') navLightbox(1);
+  if (e.key === 'ArrowLeft')  navLightbox(-1);
+});
+
+
+</script>
+</body>
+</html>

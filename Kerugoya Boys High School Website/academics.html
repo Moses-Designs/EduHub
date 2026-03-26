@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academics — Kerugoya Boys High School</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0a2a4a;--blue:#1565c0;--sky:#2196f3;--teal:#00897b;
+  --gold:#f9a825;--white:#fff;--light:#f0f6ff;--text:#1a2a3a;--muted:#546e7a;
+  --sans:'Nunito',sans-serif;--serif:'Playfair Display',serif;
+}
+body{font-family:var(--sans);color:var(--text);background:#f5f7fa}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+
+/* ── NAV ── */
+nav{background:var(--navy);padding:0 40px;position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,0.3)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--gold)}
+.nav-logo-text{color:var(--white)}
+.nav-logo-text .school{font-size:15px;font-weight:900;letter-spacing:.5px}
+.nav-logo-text .motto{font-size:10px;color:var(--gold);letter-spacing:1px;text-transform:uppercase}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-links a{color:rgba(255,255,255,0.75);font-size:13px;font-weight:600;padding:8px 14px;border-radius:4px;transition:all .2s}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,0.1)}
+.nav-links a.active{border-bottom:2px solid var(--gold)}
+.nav-cta{background:var(--gold);color:var(--navy)!important;border-radius:4px;font-weight:800!important}
+.nav-cta:hover{background:#f57f17!important}
+.hamburger{display:none;background:transparent;border:none;color:#fff;font-size:22px;cursor:pointer}
+        .mobile-menu{
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 75%;
+            height: 100vh;
+            background: var(--navy);
+            padding: 30px 20px;
+           z-index: 1000;
+
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+}
+
+.mobile-menu.open{
+  transform: translateX(0);
+}
+.mobile-menu a{display:block;color:rgba(255,255,255,0.8);padding:10px 0;font-size:14px;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.07)}
+#overlay{
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 999;
+  display:none;
+}
+
+#overlay.show{
+  display:block;
+}
+nav{
+  z-index: 200;
+}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 60%,var(--sky) 100%);
+  padding:80px 40px 60px;text-align:center;color:#fff;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url('Gemini_Generated_Image_kzkacekzkacekzka.png') center/cover;
+  opacity:.08;
+}
+.hero-inner{position:relative;z-index:1;max-width:800px;margin:0 auto}
+.hero-tag{display:inline-block;background:rgba(249,168,37,0.2);border:1px solid var(--gold);
+  color:var(--gold);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  padding:5px 16px;border-radius:20px;margin-bottom:16px}
+.hero h1{font-family:var(--serif);font-size:clamp(32px,5vw,52px);margin-bottom:16px;line-height:1.1}
+.hero p{font-size:16px;opacity:.85;line-height:1.8;max-width:600px;margin:0 auto}
+
+/* ── SECTION ── */
+.section{padding:72px 40px}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-label{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:var(--sky);margin-bottom:8px}
+.section-title{font-family:var(--serif);font-size:clamp(26px,3.5vw,40px);color:var(--navy);margin-bottom:16px}
+.section-sub{font-size:15px;color:var(--muted);line-height:1.8;max-width:660px}
+.section-divider{height:3px;width:60px;background:var(--gold);border-radius:2px;margin-bottom:40px}
+.section-alt{background:var(--light)}
+
+/* ── STAT STRIP ── */
+.stat-strip{background:var(--navy);padding:40px}
+.stat-strip-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.stat-item{text-align:center}
+.stat-num{font-family:var(--serif);font-size:42px;color:var(--gold);line-height:1}
+.stat-lbl{font-size:12px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+
+/* ── PATHWAYS ── */
+.pathway-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.pathway-card{
+  background:#fff;border-radius:12px;overflow:hidden;
+  box-shadow:0 2px 12px rgba(0,0,0,0.07);
+  transition:transform .2s,box-shadow .2s;
+  border-top:4px solid var(--blue);
+}
+.pathway-card:nth-child(2){border-top-color:var(--teal)}
+.pathway-card:nth-child(3){border-top-color:var(--gold)}
+.pathway-card:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(0,0,0,0.12)}
+.pathway-card-head{padding:24px 24px 16px;display:flex;align-items:center;gap:14px}
+.pathway-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.pathway-icon.stem{background:rgba(21,101,192,0.1);color:var(--blue)}
+.pathway-icon.social{background:rgba(0,137,123,0.1);color:var(--teal)}
+.pathway-icon.arts{background:rgba(249,168,37,0.15);color:#e65100}
+.pathway-title{font-size:18px;font-weight:800;color:var(--navy)}
+.pathway-sub{font-size:12px;color:var(--muted);margin-top:2px}
+.pathway-body{padding:0 24px 24px}
+.pathway-subjects{list-style:none;display:flex;flex-direction:column;gap:8px}
+.pathway-subjects li{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text)}
+.pathway-subjects li i{color:var(--sky);font-size:13px;width:16px}
+
+/* ── KCSE RESULTS ── */
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:40px;align-items:start}
+.results-table-wrap{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07)}
+.results-table-head{background:var(--navy);color:#fff;padding:16px 20px;font-weight:800;font-size:15px}
+table{width:100%;border-collapse:collapse}
+th{background:var(--light);padding:11px 16px;font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--navy);text-align:left}
+td{padding:11px 16px;font-size:13px;border-bottom:1px solid #e8eef5}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#f8fafd}
+.grade-bar{height:6px;border-radius:3px;background:var(--light);overflow:hidden;margin-top:4px}
+.grade-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--blue),var(--sky))}
+
+/* Performance card */
+.perf-card{background:#fff;border-radius:12px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,0.07)}
+.perf-card h3{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:20px}
+.perf-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f0f4f8}
+.perf-row:last-child{border-bottom:none}
+.perf-label{font-size:13px;color:var(--muted)}
+.perf-val{font-size:14px;font-weight:800;color:var(--navy)}
+.perf-val.good{color:var(--teal)}
+
+/* ── FACILITIES ── */
+.facilities-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.facility-card{background:#fff;border-radius:10px;padding:22px;box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.facility-icon{font-size:28px}
+.facility-name{font-size:15px;font-weight:800;color:var(--navy)}
+.facility-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* ── CBC SECTION ── */
+.cbc-box{background:linear-gradient(135deg,var(--navy),var(--blue));
+  border-radius:16px;padding:40px;color:#fff;margin-top:40px}
+.cbc-box h3{font-family:var(--serif);font-size:28px;margin-bottom:12px}
+.cbc-box p{font-size:14px;opacity:.8;line-height:1.8;max-width:600px;margin-bottom:24px}
+.cbc-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cbc-step{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);
+  border-radius:10px;padding:18px}
+.cbc-step-num{font-size:28px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:6px}
+.cbc-step-title{font-size:13px;font-weight:700;margin-bottom:4px}
+.cbc-step-desc{font-size:12px;opacity:.7;line-height:1.6}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);color:rgba(255,255,255,0.7);text-align:center;padding:32px 40px;font-size:13px}
+footer strong{color:var(--gold)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .pathway-grid{grid-template-columns:1fr}
+  .results-grid{grid-template-columns:1fr}
+  .facilities-grid{grid-template-columns:1fr 1fr}
+  .cbc-steps{grid-template-columns:1fr}
+  .stat-strip-inner{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  nav{padding:0 16px}
+  .nav-links{display:none}
+  .hamburger{display:block}
+  .hero,.section{padding:56px 20px}
+  .stat-strip{padding:32px 20px}
+  .facilities-grid{grid-template-columns:1fr}
+}
+</style>
+   <script>
+function toggleMenu(){
+  document.getElementById('mob').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="Resources/F.jpeg" alt="School Crest" class="w-14 h-14 object-contain">
+      <div class="nav-logo-text">
+        <div class="school">Kerugoya Boys High School</div>
+        <div class="motto">Lead The Way</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="academics.html" class="active">Academics</a>
+      <a href="admissions.html">Admissions</a>
+      <a href="student-life.html">Student Life</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="admissions.html" class="nav-cta">Apply Now</a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mob">
+  <a href="index.html">Home</a>
+  <a href="academics.html">Academics</a>
+  <a href="admissions.html">Admissions</a>
+  <a href="student-life.html">Student Life</a>
+  <a href="gallery.html">Gallery</a>
+</div>
+<div id="overlay" onclick="toggleMenu()"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Academic Excellence Since 1965</div>
+    <h1>Academics at Kerugoya Boys</h1>
+    <p>A tradition of intellectual excellence, rigorous academics, and holistic development. Shaping Kenya's future leaders through quality education.</p>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stat-strip">
+  <div class="stat-strip-inner">
+    <div class="stat-item">
+      <div class="stat-num">7.28</div>
+      <div class="stat-lbl">KCSE Mean Score</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">61%</div>
+      <div class="stat-lbl">University Entry Rate</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2000+</div>
+      <div class="stat-lbl">Students Enrolled</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">47</div>
+      <div class="stat-lbl">Teaching Staff</div>
+    </div>
+  </div>
+</div>
+
+<!-- CBC PATHWAYS -->
+<div class="section">
+  <div class="section-inner">
+    <div class="section-label">Curriculum</div>
+    <div class="section-title">CBC Pathways & Subjects</div>
+    <div class="section-sub">Under the Competency-Based Curriculum (CBC), Kerugoya Boys Senior School offers 30 subject combinations across three career pathways for Grades 10, 11, and 12.</div>
+    <div class="section-divider"></div>
+
+    <div class="pathway-grid">
+      <!-- STEM -->
+      <div class="pathway-card">
+        <div class="pathway-card-head">
+          <div class="pathway-icon stem"><i class="fas fa-flask"></i></div>
+          <div>
+            <div class="pathway-title">STEM</div>
+            <div class="pathway-sub">Science, Technology, Engineering & Math</div>
+          </div>
+        </div>
+        <div class="pathway-body">
+          <ul class="pathway-subjects">
+            <li><i class="fas fa-check-circle"></i>Mathematics & Physics</li>
+            <li><i class="fas fa-check-circle"></i>Chemistry & Biology</li>
+            <li><i class="fas fa-check-circle"></i>Computer Science & ICT</li>
+            <li><i class="fas fa-check-circle"></i>Technical & Engineering</li>
+            <li><i class="fas fa-check-circle"></i>Applied Sciences</li>
+          </ul>
+        </div>
+      </div>
+      <!-- SOCIAL SCIENCES -->
+      <div class="pathway-card">
+        <div class="pathway-card-head">
+          <div class="pathway-icon social"><i class="fas fa-globe-africa"></i></div>
+          <div>
+            <div class="pathway-title">Social Sciences</div>
+            <div class="pathway-sub">Humanities, Business & Law</div>
+          </div>
+        </div>
+        <div class="pathway-body">
+          <ul class="pathway-subjects">
+            <li><i class="fas fa-check-circle"></i>History & Government</li>
+            <li><i class="fas fa-check-circle"></i>Geography & Economics</li>
+            <li><i class="fas fa-check-circle"></i>Business Studies</li>
+            <li><i class="fas fa-check-circle"></i>Languages & Literature</li>
+            <li><i class="fas fa-check-circle"></i>Religious Education</li>
+          </ul>
+        </div>
+      </div>
+      <!-- ARTS & SPORTS -->
+      <div class="pathway-card">
+        <div class="pathway-card-head">
+          <div class="pathway-icon arts"><i class="fas fa-palette"></i></div>
+          <div>
+            <div class="pathway-title">Arts & Sports</div>
+            <div class="pathway-sub">Performing Arts, Visual Arts & PE</div>
+          </div>
+        </div>
+        <div class="pathway-body">
+          <ul class="pathway-subjects">
+            <li><i class="fas fa-check-circle"></i>Music & Performing Arts</li>
+            <li><i class="fas fa-check-circle"></i>Visual Arts & Design</li>
+            <li><i class="fas fa-check-circle"></i>Physical Education</li>
+            <li><i class="fas fa-check-circle"></i>Agriculture</li>
+            <li><i class="fas fa-check-circle"></i>Home Science</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KCSE RESULTS -->
+<div class="section section-alt">
+  <div class="section-inner">
+    <div class="section-label">Performance</div>
+    <div class="section-title">KCSE Results Analysis</div>
+    <div class="section-sub">Kerugoya Boys has consistently ranked among the top schools in Kirinyaga County and the top 200 schools nationally.</div>
+    <div class="section-divider"></div>
+
+    <div class="results-grid">
+      <div class="results-table-wrap">
+        <div class="results-table-head">2025 KCSE Grade Distribution (237 Candidates)</div>
+        <table>
+          <thead><tr><th>Grade</th><th>Candidates</th><th>Distribution</th></tr></thead>
+          <tbody id="grades-tbody"></tbody>
+        </table>
+      </div>
+      <div>
+        <div class="perf-card" style="margin-bottom:16px">
+          <h3>Performance Summary — 2025 KCSE</h3>
+          <div class="perf-row"><span class="perf-label">Total Candidates</span><span class="perf-val">237</span></div>
+          <div class="perf-row"><span class="perf-label">School Mean Score</span><span class="perf-val good">7.278</span></div>
+          <div class="perf-row"><span class="perf-label">Standard Deviation</span><span class="perf-val">0.32</span></div>
+          <div class="perf-row"><span class="perf-label">University Entry (C+ and above)</span><span class="perf-val good">145 students</span></div>
+          <div class="perf-row"><span class="perf-label">University Entry Rate</span><span class="perf-val good">61.18%</span></div>
+          <div class="perf-row"><span class="perf-label">County Ranking</span><span class="perf-val">Position 6 — Kirinyaga County</span></div>
+          <div class="perf-row"><span class="perf-label">National Ranking</span><span class="perf-val">Top 200 Schools Nationally</span></div>
+        </div>
+        <div class="perf-card">
+          <h3>Academic Highlights</h3>
+          <div class="perf-row"><span class="perf-label">School Code (KNEC)</span><span class="perf-val">9203401</span></div>
+          <div class="perf-row"><span class="perf-label">Classification</span><span class="perf-val">Extra-County / C2</span></div>
+          <div class="perf-row"><span class="perf-label">Curriculum</span><span class="perf-val">CBC Senior School</span></div>
+          <div class="perf-row"><span class="perf-label">Grades Offered</span><span class="perf-val">Grade 10, 11 & 12</span></div>
+          <div class="perf-row"><span class="perf-label">Student–Teacher Ratio</span><span class="perf-val">15:1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FACILITIES -->
+<div class="section">
+  <div class="section-inner">
+    <div class="section-label">Infrastructure</div>
+    <div class="section-title">Academic Facilities</div>
+    <div class="section-sub">Spread across 50 acres, our campus provides a rich learning environment with modern academic infrastructure.</div>
+    <div class="section-divider"></div>
+    <div class="facilities-grid">
+      <div class="facility-card"><div class="facility-icon">🏫</div><div class="facility-name">Modern Classrooms</div><div class="facility-desc">Well-ventilated, spacious classrooms equipped for both KCSE and CBC learning modes.</div></div>
+      <div class="facility-card"><div class="facility-icon">🔬</div><div class="facility-name">Science Laboratories</div><div class="facility-desc">Fully equipped Physics, Chemistry, and Biology labs supporting hands-on STEM learning.</div></div>
+      <div class="facility-card"><div class="facility-icon">💻</div><div class="facility-name">Computer Lab</div><div class="facility-desc">ICT lab with internet connectivity supporting digital learning and CBE coursework.</div></div>
+      <div class="facility-card"><div class="facility-icon">📚</div><div class="facility-name">Library</div><div class="facility-desc">A well-stocked library with reference books, study materials, and reading spaces.</div></div>
+      <div class="facility-card"><div class="facility-icon">🎨</div><div class="facility-name">Arts & Design Studio</div><div class="facility-desc">Dedicated studio for Visual Arts, performing arts, and creative subjects under CBC.</div></div>
+      <div class="facility-card"><div class="facility-icon">📐</div><div class="facility-name">Project-Based Labs</div><div class="facility-desc">New CBE project-based learning labs supporting inquiry and innovation for Grade 10+.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CBC INFO -->
+<div class="section section-alt">
+  <div class="section-inner">
+    <div class="cbc-box">
+      <h3>Competency-Based Education (CBC) — 2026</h3>
+      <p>Kerugoya Boys Senior School is fully geared up for the Competency-Based Education rollout. Grade 9 learners seeking placement to Grade 10 can now apply through the Ministry of Education portal. We offer 30 subject combinations across all three pathways.</p>
+      <div class="cbc-steps">
+        <div class="cbc-step">
+          <div class="cbc-step-num">01</div>
+          <div class="cbc-step-title">Choose Your Pathway</div>
+          <div class="cbc-step-desc">Select STEM, Social Sciences, or Arts & Sports Science based on your career interests.</div>
+        </div>
+        <div class="cbc-step">
+          <div class="cbc-step-num">02</div>
+          <div class="cbc-step-title">Select Subject Combinations</div>
+          <div class="cbc-step-desc">Pick 3 subject combinations within your chosen pathway from our 30 available options.</div>
+        </div>
+        <div class="cbc-step">
+          <div class="cbc-step-num">03</div>
+          <div class="cbc-step-title">Apply via MoE Portal</div>
+          <div class="cbc-step-desc">Visit selection.education.go.ke to select schools and confirm your placement.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 <strong>Kerugoya Boys High School</strong> — P.O. Box 27, Kerugoya, Kirinyaga County, Kenya &nbsp;|&nbsp; 📞 0716 337 026 &nbsp;|&nbsp; ✉️ kerugoyaboys2015@gmail.com</p>
+</footer>
+
+<script>
+const grades = [
+  {g:'A-', n:8},{g:'B+', n:29},{g:'B', n:29},{g:'B-', n:29},
+  {g:'C+', n:37},{g:'C', n:45},{g:'C-', n:35},{g:'D+', n:11},{g:'D-', n:1}
+];
+const max = Math.max(...grades.map(g=>g.n));
+const tbody = document.getElementById('grades-tbody');
+tbody.innerHTML = grades.map(g=>`
+  <tr>
+    <td><strong>${g.g}</strong></td>
+    <td>${g.n}</td>
+    <td style="width:140px">
+      <div class="grade-bar"><div class="grade-fill" style="width:${Math.round((g.n/max)*100)}%"></div></div>
+    </td>
+  </tr>
+`).join('');
+</script>
+</body>
+</html>
