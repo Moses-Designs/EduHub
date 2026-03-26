@@ -55,6 +55,3 @@ This project was developed to:
 Improve the digital presence of schools
 
 Provide easy access to academic and admission information
-
-Demonstrate frontend web development skillseparated)
-│── script.js (if separated)
